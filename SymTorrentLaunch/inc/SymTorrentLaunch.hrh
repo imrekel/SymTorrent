@@ -1,0 +1,16 @@
+/*
+============================================================================
+ Name        : SymTorrentLaunch resource header file SymTorrentLaunch.hrh
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : This file contains declarations for constants of SymTorrentLaunch.
+               The file can be included in C++ or resource file.
+============================================================================
+*/
+
+#ifndef SYMTORRENTLAUNCH_HRH
+#define SYMTORRENTLAUNCH_HRH
+
+
+#endif      // SYMTORRENTLAUNCH_HRH

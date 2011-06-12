@@ -1,0 +1,215 @@
+SymTorrent 1.50 release notes
+---------------------------------
+release notes updated on June 12. 2011
+
+Webpage: http://symtorrent.aut.bme.hu
+
+
+Table of contents:
+------------------
+
+    1. General info
+    2. Version history
+    3. Installation
+    4. Known issues
+    5. Developer info 
+    6. Credits
+
+
+1. General info
+ ----------------
+
+   SymTorrent is a BitTorrent client for Symbian based smartphones built on the S60 platform.
+   You can use SymTorrent to download torrents right to your mobile phone. Torrents can be started
+   from the browser by clicking on torrent links. If the torrent contains multiple files, you
+   can select which files you want to download. 
+
+
+2. Version history
+------------------
+    1.50  - 2011.03.11. - Changed UIDs back to unprotected in order to reenable self signing.
+	
+    1.50  - 2010.12.14. General:
+						- First OVI Store release, had to completly restructure projects, change UIDs, etc.
+						- Fixed startup crash caused by missing/deleted saved torrent file
+						- Files larger than 4GB are skipped by default (FAT32 limitation) and a warning is displayed to the user when the torrent is loaded.
+						
+						BitTorrent engine:
+						- If a peer sends a particular piece incorrectly (hash check fails) two times, that piece is not downloaded again from the peer.
+						- Torrent tries to connect to all trackers simultaneously not to only one
+						- Maximum number of peers allowed per torrent is raised to 200. Maximum number of parallel TCP connections per torrent is raised to 25.
+						- 50 most recent peers are saved when exiting
+						- BUG FIXED: USER 130 panic if connecting to network fails while some sockets are open
+						- BUG FIXED: USER 11 panic at random intervals while downloading (caused by an undersized TBuf used for logging some debug info)
+						
+						UI changes:
+						- Fixed piece bar width when screen orientation is changed (bar fits screen width)
+						- Fixed piece bar pieces colors
+						- Fixed torrent properties view size and background when layout is changed
+						- Enabled touch scrolling for torrent properties view
+						- Enabled marquee effect for torrent and files lists
+						- Added touch friendly tab bars
+						- Changed "Checking hash" progress dialog text to "Looking for already downloaded files" and renamed "Cancel" softkey to "Skip"
+						- If no torrents has been added, tapping the screen adds a torrent
+	
+    1.42  - 2009.07.17. - SVN version control integration
+    	  - 2008.12.13. - When a torrent is removed, the user is asked if they want to have incomplete files of the torrent deleted
+    
+    1.41  - 2008.11.26. - BUG[SymTorrent crashes after entering endgame] fixed
+
+    1.40  - 2008.05.01. - BUG[Green upload icon is displayed correctly (only when there is an active upload in progress)
+            2008.05.15. - Peers from tracker response are processed correctly (compact response bug)
+            2008.06.01. - Option to automatically close network connection after downloads has been added
+            2008.06.13. - Text colors fixed (obtained from theme)
+            2008.06.13. - Changed line spacing in status and details views
+            2008.06.13. - Changed the colors in the download status bar: yellow means patially download, green is fully downloaded
+            2008.06.13. - BUG[Download path setting dialog pops up two times] FIXED
+            2008.06.14. - BUG[Network conenction selection dialog popped up multiple times when cancelled] FIXED
+            2008.06.14. - Error popups are displayed when starting the network connection failes or the network is disconnected
+            2008.06.14. - Torrents no longer become "failed" when the user cancels the network selection dialog
+            2008.06.16. - BUG[Application crashes with KERN-EXEC 0 during download] POSSIBLY FIXED (?)
+            2008.06.16  - BUG[Receiving HAVE message with piece index 0 causes that the peer disconnects] FIXED
+            2008.06.16. - Piece queuing added/updated
+            2008.08.26. - Selecting which files of a torrent to download is now possible (in the files view select Download selection)
+            2008.08.26. - BUG[The download status view is not refreshed after rotating the screen] FIXED
+            2008.10.18. - S60 5th UI compatibility problems solved
+            2008.10.19. - Text size on status and torrent properties view changed            
+            2008.10.22. - BUG[IP address is not displayed in status view] FIXED
+            2008.10.22. - Added warning popups when witing to disk fails or no peers left
+            2008.11.24. - BUG[Some of the downloaded data is lost after exiting] FIXED (partially downloaded pieces are saved)
+
+    1.32 -  Bufixes:
+
+            + A memory leak in the tracker has been fixed
+            + Some misspellings has been corrected
+
+            Major source code modifications:
+
+            + The networking and logging has been moved to separate libraries (KiNetwork is responsible for handling network connections, sockets, etc.
+              KiLogger is a general logging library which enables logging into multiple files with timestamps).
+
+    1.30 -  + End game algorithm implemented, downloading shouldn't slow down at the end. When a torrent enters ebd game, an "EG" label will appear
+              next to the download percentage in the torrent's status view.
+            + Network address of the devices is displayed correctly in the Status panel.
+            + In the torrent status view, the total number of peers is displayed (in brackets) along with the number of connected peers for each torrent.
+            + Backup & restore functionality for S60 3rd edition is now working for SymTorrent.
+            + The settings menu has been divided into a couple of sub-parts (separate page for general, proxy, and tracker settings).
+            + Piece hashes are checked when the application loads (can be enabled / disabled in the settings). 
+              This prevents deleted files appearing as downloaded.
+              Piece hashes are checked when a new torrent is opened. If matching files are found in the target directory then those parts of torrent appears as downloaded.
+              Hash checking can always be skipped by pressing the Cancel softkey.
+            + Settings and download status are automatically saved in every 60 seconds (in previous versions the interval was 2 minutes).
+
+            Bugfixes:
+
+            + "SymTorrent disconnects good peers after handshake" MAJOR BUG fixed (apparently it caused that SymTorrent disconnected from around the third of the peers
+              right after handshake)
+            + "Application won't start after changing the incoming port" bug fixed
+            + "Application crashes in the Torrent Properties view if the 'Comment' or 'Created by' fields in a torrent are longer than 200 characters" bug fixed
+            + "Loading torrents with empty files (0 bytes) crashes" bug fixed
+            + "Wrong IP address is sent to the tracker if the device is behind a router (NAT)" bug fixed (IP address is now sent only if proxy connection is used)
+            + "SymTorrent cannot open sound files in the Files View" bug fixed (the file opening mechanism is completely replaced, files are now opened embedded in SymTorrent)
+
+            Major source code modifications:
+
+            + Tracker is moved to a separate DLL. From now on, SymTorrent will be released in two different packages: one with and one without the built-in tracker (it saves memory if you
+              use the version which doesn't have the tracker)
+
+    1.26 -  Major bugfix ("downloads slow down at the end" problem fixed), status of tracker is displayed in the tracker view. On the protocol
+            level, piece requests are sent in bursts (it may also speed up transfer a bit).
+
+    1.21 -  Added multi-tracker support (SymTorrent now parses "announce-list" entries from the torren files)
+            Added proxy support (you can run a proxy on a separate desktop computer to provide public IP address for your mobile device)
+            Added tracker (a basic tracker service is available inside SymTorrent)
+            Some fixes in the UI (hopefully, the flickering in the download state view is gone)
+            Pieces are downloaded in random order
+            For developers: SymTorrent is divided into several separate projects, e.g. the engine is available in a separate DLL.
+
+    1.10 -  Client can accept incomming connections.
+            Some bugs have been fixed.
+            The state of torrents is saved in every 2 minutes. 
+            Both S60 3rd and 2nd edition phones are supported.
+
+    1.0  -  Initial release
+
+
+3. Installation
+---------------
+
+    SymTorrent is a self-signed application, which means it has not been sent to Symbian for testing. Before installation
+    you should make sure your phone has the "Software installation" option of the Application manager set to "All" 
+    (Tools / App. mgr. / Settings), otherwise the phone may refuse to install the application.
+
+
+4. Known issues
+---------------
+
+   SymTorrent rarely crashes during download (the application exits and needs to be restarted to continue downloading).
+   
+   Poor performance with large (larger than 2 GByte) torrents.
+
+   Some downloaded files are not accessible while other parts of the associated torrent are still being downloaded.
+
+   There could be some issues with the built-in tracker.
+    
+
+5. Developer info
+----------------------
+   
+   SymTorrent consists of several projects, which needs to be built separately to prepare the complete application. Each project
+   has a separate directory.
+   In order to get a running version of SymTorrent, you only need to build "SymTorrentEngine" and "SymTorrent". The
+   projects "TorrentRecog" and "SymTorrentLaunch" are responsible for autostarting SymTorrent when a .torrent file
+   is selected on the phone.
+   
+   The complete list of projects included in the repository:
+
+      SymTorrent             - The UI and the other "high level" components of the application excluding the BitTorrent engine.
+
+      SymTorrentEngine       - A separate DLL which is responsible for all the UI independent client functions, such as connecting 
+                               the tracker, communicating with the peers, etc. If you are thinking on creating your own BitTorrent-based
+                               application then you will need this project. It also includes the communication/network related code.
+
+      SymTorrentLauncher     - Separate dummy application for launching SymTorrent when a recognizer finds an associated file (.torrent).
+
+      TorrentRecog		     - A recognizer for .torrent files (the sis file must be Symbian-signed otherwise recognizers
+                               won't install on the phone!). A prebuilt and express signed sis file is included in the SymTorrent subproject's
+							   SIS directory.
+	  
+	  KiLogger				 - Project for file based debug logging. Logging is disabled by default so you do not need to bother with this.
+  
+   Furthermore, there is a Screenshots directory holding a couple of screenshots for SymTorrent and the logo.
+   
+   The projects can be built with S60 3rd MR SDK or newer version. Using a newer SDK actually gives no benefits so I recommend using
+   the 3rd MR version to maintain the broadest device compatibility.
+   
+   Using Carbide C++:
+   
+   In order to build SymTorrent, first initialize Carbide C++ with a new workspace (preferably the directory where all the SymTorrent
+   subprojects are located). After that import each subproject one-by-one using the File/Import/Symbian OS/Symbian OS bld.inf file menu
+   command (select bld.inf from the subproject_name\group directory). Make sure that when the wizard gets to the "Project name and location" 
+   part, the "Root directory" points to the root of the current subproject (e.g. SymTorrent\SymTorrentEngine for SymTorrentEngine) not to 
+   the root of the repository. Otherwise you will get errors at the end of the import process.
+   To get a SIS installer at the end of the build proces, you need to configure the SIS builder for the "SymTorrent" project. Select the
+   SymTorrent project the go to Project/Properties/Carbide C++/Build Configurations/SIS Builder. Add a new SIS and select SymTorrent.pkg
+   as the package file. SymTorrent can be built as a self-signed app.
+   When done, first build KiLogger, then SymTorrentEngine and finally SymTorrent. If everything is done correctly, you should have a signed
+   SIS file in the directory, you gave at the SIS Builder settings.
+
+   
+6. Credits
+----------
+
+   Current authors:
+   
+   	Imre Kelényi (imre.kelenyi@aut.bme.hu)
+	
+   Former authors (initial version):
+   
+	Péter Ekler
+		  SymTorrent UI, tracker and proxy
+			
+    Zsolt Pszota
+		  SymTorrent UI, tracker and proxy	
+
+   	Special thanks to Dorottya Takács for the SymTorrent logo!

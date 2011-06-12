@@ -1,0 +1,18 @@
+; standard SIS file header
+#{"KiLogger"},(0xA00037D4),1,0,0
+
+&EN
+
+;Localised Vendor name
+%{"BUTE_DAAI"}
+
+;Unique Vendor name
+:"BUTE_DAAI"
+
+;Supports S60 release 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Supports S60 release 5.0
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+"$(EPOCROOT)Epoc32\release\$(PLATFORM)\$(TARGET)\KiLogger.dll"	-"!:\sys\bin\KiLogger.dll"

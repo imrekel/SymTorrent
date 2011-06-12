@@ -1,0 +1,1 @@
+ makekeys -cert -expdays 7300 -len 2048 -dname "CN=SymTorrent User OU=Development OR=AMORG CO=HU EM=test@company.com" longkey.key longcert.cer

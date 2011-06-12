@@ -1,0 +1,7 @@
+#ifndef KINETWORKLOGCONF_H_
+#define KINETWORKLOGCONF_H_
+
+//#define LOG_TO_FILE
+//#define HEAVY_LOG
+
+#endif /*KINETWORKLOGCONF_H_*/

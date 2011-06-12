@@ -1,0 +1,23 @@
+TARGET          TorrentRecog.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x20035B25
+VENDORID		0
+CAPABILITY      Protserv
+
+START RESOURCE  20035B25.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET          TorrentRecog.rsc
+#endif // SYMBIAN_SECURE_ECOM
+END
+
+SOURCEPATH     .
+SOURCE         TorrentRecognizer.cpp
+
+USERINCLUDE    .
+SYSTEMINCLUDE  .
+SYSTEMINCLUDE  \Epoc32\Include
+SYSTEMINCLUDE  \epoc32\include\ecom
+
+LIBRARY euser.lib apmime.lib efsrv.lib
+
+//EXPORTUNFROZEN

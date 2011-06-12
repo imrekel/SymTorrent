@@ -1,0 +1,20 @@
+/*
+============================================================================
+ Name        : bld.inf
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Component definition file
+============================================================================
+*/
+
+PRJ_PLATFORMS
+WINSCW ARMV5 GCCE
+
+PRJ_EXPORTS
+//..\inc\hello.txt ..\release\winscw\udeb\z\system\apps\symtorrentlaunch\hello.txt
+PRJ_MMPFILES
+
+//gnumakefile icons_reg_scalable_dc.mk
+
+SymTorrentLaunch.mmp

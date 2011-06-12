@@ -1,0 +1,154 @@
+/*****************************************************************************
+ * Copyright (C) 2006-2010 Imre Kelényi
+ *-------------------------------------------------------------------
+ * This file is part of SymTorrent
+ *
+ * SymTorrent is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * SymTorrent is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Symella; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *****************************************************************************/
+
+/**
+ * ============================================================================
+ *  Name     : SymTorrentEngine.mmp
+ *  Part of  : SymTorrent
+ *  Created  : 20.11.2006 by Imre Kelényi
+ *  Description:
+ *     This is the project specification file for SymTorrentEngine
+ * ============================================================================
+ */
+ 
+#include "..\inc\engine\SymTorrentEngineLogConf.h"
+
+TARGET                                  SymTorrentEngine.dll 
+TARGETTYPE                              dll
+
+UID                                     0x1000008d 0xA0001C44
+VENDORID								0
+CAPABILITY                              LocalServices UserEnvironment NetworkServices ReadUserData WriteUserData
+
+USERINCLUDE                             ..\inc\engine
+USERINCLUDE                             ..\inc\bencode
+USERINCLUDE                             ..\inc\kinetwork
+USERINCLUDE                             ..\inc\util
+USERINCLUDE                             ..\..\KiLogger\inc 
+
+// USERINCLUDE                             ..\..\..\KademliaCore\inc 			// !!!DHT!!!
+// USERINCLUDE                             ..\..\..\BitTorrentDHT\inc  			// !!!DHT!!!
+// SYSTEMINCLUDE                           . 
+SYSTEMINCLUDE                           \epoc32\include 						
+SYSTEMINCLUDE                           \epoc32\include\ecom					
+// SYSTEMINCLUDE							\epoc32\include\stdapis				// !!!DHT!!!
+// SYSTEMINCLUDE							\epoc32\include\stdapis\glib-2.0	// !!!DHT!!!
+
+SOURCEPATH                              ..\src\engine
+SOURCE                                  STPreferences.cpp 
+SOURCE                                  STTorrent.cpp 
+SOURCE                                  STTorrentManager.cpp 
+SOURCE                                  STPiece.cpp 
+SOURCE                                  STFile.cpp 
+SOURCE                                  STTrackerConnection.cpp 
+SOURCE                                  STPeer.cpp 
+SOURCE                                  STPeerConnection.cpp 
+SOURCE                                  STBitField.cpp
+SOURCE                                  STFileManager.cpp 
+SOURCE                                  STFileManagerEntry.cpp
+SOURCE                                  STStringFormatter.cpp
+SOURCE                                  STTorrentManagerSingleton.cpp
+SOURCE                                  STAnnounceList.cpp
+SOURCE                                  STHashChecker.cpp
+SOURCE									STPeerArray.cpp
+SOURCE									STPieceAccess.cpp
+SOURCE									STFileWriter.cpp
+SOURCE									STUtils.cpp
+SOURCE									MeasurementLog.cpp
+SOURCE									FailedPieceCollector.cpp
+SOURCE									Tracker.cpp
+SOURCE									TrackerManager.cpp
+
+SOURCEPATH                              ..\src\util
+SOURCE                                  Timeout.cpp 
+
+SOURCEPATH                              ..\src\bencode
+SOURCE                                  STBencode.cpp
+SOURCE                                  STBencodedInteger.cpp 
+SOURCE                                  STBencodedString.cpp 
+SOURCE                                  STBencodedList.cpp 
+SOURCE                                  STBencodedDictionary.cpp 
+SOURCE                                  STBencodedDictionaryEntry.cpp
+SOURCE                                  STSimpleStack.cpp 
+SOURCE                                  STUtil.cpp 
+
+SOURCEPATH                              ..\src\kinetwork
+SOURCE                                  SocketBase.cpp 
+SOURCE									UDPSocket.cpp
+SOURCE									UDPSocketReader.cpp
+SOURCE									UDPSocketWriter.cpp
+SOURCE									ConnectedSocket.cpp
+SOURCE                                  ConnectedSocketConnector.cpp
+SOURCE									ConnectedSocketReader.cpp
+SOURCE                                  ConnectedSocketWriter.cpp
+SOURCE									ReadBuffer.cpp 
+SOURCE                                  WriteBuffer.cpp
+SOURCE                                  NetworkConnection.cpp
+SOURCE                                  NetworkManager.cpp
+SOURCE 									SocketListenerBase.cpp
+SOURCE									TCPSocketListener.cpp 
+SOURCE									BluetoothSocketListener.cpp 
+SOURCE									BluetoothServiceDiscoverer.cpp 
+SOURCE									BluetoothManager.cpp 
+SOURCE									BluetoothDeviceDiscoverer.cpp
+
+LIBRARY                                 charconv.lib 
+LIBRARY                                 euser.lib 
+LIBRARY                                 apparc.lib 
+LIBRARY                                 cone.lib 
+LIBRARY                                 eikcore.lib 
+LIBRARY                                 eikcoctl.lib 
+LIBRARY                                 avkon.lib 
+LIBRARY                                 efsrv.lib 
+LIBRARY                                 bafl.lib 
+LIBRARY                                 hash.lib 
+LIBRARY                                 InetProtUtil.lib 
+LIBRARY                                 http.lib 
+LIBRARY                                 ecom.lib 
+LIBRARY                                 insock.lib
+LIBRARY                                 commdb.lib
+LIBRARY                                 commonui.lib 
+LIBRARY                                 apmime.lib 
+LIBRARY                                 esock.lib 
+LIBRARY                                 fbscli.lib
+LIBRARY                                 CommonEngine.lib 
+LIBRARY                                 etext.lib
+LIBRARY                                 eikctl.lib
+LIBRARY                                 egul.lib
+LIBRARY                                 PlatformEnv.lib
+LIBRARY                                 apgrfx.lib
+LIBRARY									btmanclient.lib
+LIBRARY									bluetooth.lib
+LIBRARY									btextnotifiers.lib 
+LIBRARY									sdpdatabase.lib
+LIBRARY									sdpagent.lib
+
+#ifdef LOG_TO_FILE
+LIBRARY									KiLogger.lib
+#endif
+
+// LIBRARY									libc.lib 		// !!!DHT!!!
+// LIBRARY									libglib.lib 	// !!!DHT!!!
+
+LIBRARY                                 Etel3rdParty.lib 
+
+EXPORTUNFROZEN
+
+// LIBRARY KademliaCore.lib BitTorrentDHT.lib // !!!DHT!!!

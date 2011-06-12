@@ -1,0 +1,117 @@
+/*
+============================================================================
+ Name        : SymTorrentLaunch.rss
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : This file contains all the resources for the SymTorrentLaunch.
+============================================================================
+*/
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include "SymTorrentLaunch.hrh"
+#include "SymTorrentLaunch.rls"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+
+
+
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+// -----------------------------------------------------------------------------
+//
+//    Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF { buf = "SymTorrentLaunch"; }
+
+// -----------------------------------------------------------------------------
+//
+//    Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_SymTorrentLaunch_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// ---------------------------------------------------------
+//   
+//   r_SymTorrentLauncher_menubar
+//   Menubar for SymTorrentLauncher example
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_BAR r_SymTorrentLaunch_menubar
+    {
+    titles =
+        {
+        MENU_TITLE {menu_pane = r_symtorrentlaunch_app_menu;}
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//    Localizable application information
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_symtorrentlaunch_localisable_app_info
+    {
+    short_caption = qtn_app_short_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = qtn_app_caption_string;
+
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\SymTorrentLaunch_REG.mif";
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrentlaunch_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_symtorrentlaunch_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key = 'e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrentlaunch_app_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrentlaunch_app_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EAknCmdExit; txt = qtn_appl_exit; }
+        };
+    }

@@ -1,0 +1,7 @@
+SymTorrent*.sis
+SymTorrent*.sisx
+.cproject
+.project
+.metadata/
+ABLD.BAT
+devcert-ovi/

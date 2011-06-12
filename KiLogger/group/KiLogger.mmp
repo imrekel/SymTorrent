@@ -1,0 +1,26 @@
+TARGET                                  KiLogger.dll 
+TARGETTYPE                              dll
+
+#ifdef EKA2
+UID                                     0x1000008d 0xA00037D4
+CAPABILITY	  	  						LocalServices UserEnvironment NetworkServices ReadUserData WriteUserData
+#else
+UID                                     0x1000008d 0x2000CBEB
+#endif
+
+USERINCLUDE                             ..\inc 
+SYSTEMINCLUDE                           . 
+SYSTEMINCLUDE                           \epoc32\include 
+
+SOURCEPATH                              ..\src
+
+SOURCE                                  KiLogger.cpp
+SOURCE									KiLogManager.cpp
+
+LIBRARY                                 euser.lib 
+LIBRARY                                 apparc.lib 
+LIBRARY                                 cone.lib
+LIBRARY                                 efsrv.lib 
+LIBRARY                                 bafl.lib 
+
+EXPORTUNFROZEN

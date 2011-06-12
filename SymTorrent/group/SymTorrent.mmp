@@ -1,0 +1,143 @@
+/*****************************************************************************
+ * Copyright (C) 2006-2008 Imre Kelényi, Péter Ekler, Zsolt Pszota
+ *-------------------------------------------------------------------
+ * This file is part of SymTorrent
+ *
+ * SymTorrent is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * SymTorrent is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with SymTorrent; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *****************************************************************************/
+
+/**
+ * ============================================================================
+ *  Name     : SymTorrent.mmp
+ *  Part of  : SymTorrent
+ *  Created  : 31.01.2006 by Imre Kelényi
+ *  Description:
+ *     This is the project specification file for SymTorrent.
+ * ============================================================================
+ */
+ 
+#include "..\inc\SymTorrentLogConf.h" // to enable/disable debug logs
+
+TARGET                                  SymTorrent.exe
+TARGETTYPE                              exe
+UID                                     0x0 0xA0001751
+VENDORID								0
+CAPABILITY                              NetworkServices
+
+EPOCSTACKSIZE   0x5000
+EPOCHEAPSIZE    0x100000 0x1000000 // Min 1Mb, max 16Mb
+
+LANG                                    SC
+
+SOURCEPATH                              ..\data
+
+ START RESOURCE SymTorrent.rss
+    HEADER
+    TARGETPATH resource\apps
+    LANG     SC
+ END // RESOURCE
+
+ START RESOURCE    SymTorrent_reg.rss
+#ifdef WINSCW
+ TARGETPATH 	  \private\10003a3f\apps
+#else
+ TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+ END //RESOURCE
+
+USERINCLUDE                             ..\inc 
+USERINCLUDE                             ..\..\SymTorrentEngine\inc\engine
+USERINCLUDE                             ..\..\SymTorrentEngine\inc\bencode
+USERINCLUDE                             ..\..\SymTorrentEngine\inc\kinetwork
+USERINCLUDE                             ..\..\SymTorrentEngine\inc\util
+USERINCLUDE                             ..\..\KiLogger\inc
+// USERINCLUDE                             ..\..\..\KademliaCore\inc  		// !!!DHT!!!
+// USERINCLUDE                             ..\..\..\BitTorrentDHT\inc  		// !!!DHT!!!
+
+SYSTEMINCLUDE                           .
+SYSTEMINCLUDE                           \epoc32\include 
+SYSTEMINCLUDE                           \epoc32\include\ecom 
+// SYSTEMINCLUDE							\epoc32\include\stdapis 			// !!!DHT!!!
+// SYSTEMINCLUDE							\epoc32\include\stdapis\glib-2.0  	// !!!DHT!!!
+
+SOURCEPATH                              ..\src 
+SOURCE                                  SymTorrentApp.cpp 
+SOURCE                                  SymTorrentAppui.cpp 
+SOURCE                                  SymTorrentDocument.cpp 
+SOURCE                                  SymTorrentMainContainer.cpp 
+SOURCE                                  SymTorrentMainView.cpp 
+SOURCE                                  SymTorrentDetailsView.cpp 
+SOURCE                                  SymTorrentDetailsContainer.cpp 
+SOURCE                                  SymTorrentDownloadStateView.cpp 
+SOURCE                                  SymTorrentDownloadStateContainer.cpp 
+SOURCE                                  SymTorrentSettingsView.cpp 
+SOURCE                                  SymTorrentSettingsContainer.cpp
+SOURCE                                  SymTorrentProxySettingsContainer.cpp
+SOURCE                                  SymTorrentFilesView.cpp 
+SOURCE                                  SymTorrentFilesContainer.cpp
+SOURCE                                  SymTorrentStatusView.cpp
+SOURCE                                  SymTorrentStatusContainer.cpp
+SOURCE                                  AccessPointSettingItem.cpp
+SOURCE                                  FileSelectionSettingItem.cpp
+SOURCE                                  NotifyFileChange.cpp
+SOURCE									TouchScrollableRichTextEditor.cpp
+
+
+#ifdef EKA2 // includes for the DHT
+#endif
+
+LIBRARY                                 charconv.lib 
+LIBRARY                                 euser.lib 
+LIBRARY                                 apparc.lib 
+LIBRARY                                 cone.lib 
+LIBRARY                                 eikcore.lib 
+LIBRARY                                 eikcoctl.lib 
+LIBRARY                                 avkon.lib 
+LIBRARY                                 aknskins.lib 
+LIBRARY                                 efsrv.lib 
+LIBRARY                                 bafl.lib 
+LIBRARY                                 hash.lib 
+LIBRARY                                 InetProtUtil.lib 
+LIBRARY                                 http.lib 
+LIBRARY                                 ecom.lib 
+LIBRARY                                 insock.lib
+LIBRARY                                 commdb.lib
+LIBRARY                                 commonui.lib 
+LIBRARY                                 apmime.lib 
+LIBRARY                                 esock.lib 
+LIBRARY                                 eikcdlg.lib 
+LIBRARY                                 fbscli.lib
+LIBRARY                                 CommonDialogs.lib
+LIBRARY                                 CommonEngine.lib 
+LIBRARY                                 etext.lib
+LIBRARY                                 eikctl.lib
+LIBRARY                                 egul.lib
+LIBRARY                                 PlatformEnv.lib
+LIBRARY                                 apgrfx.lib
+LIBRARY                                 ws32.lib
+LIBRARY                                 gdi.lib
+LIBRARY                                 SymTorrentEngine.lib
+
+#ifdef LOG_TO_FILE
+LIBRARY									KiLogger.lib
+#endif
+
+LIBRARY									aknicon.lib
+LIBRARY									Etel3rdParty.lib 
+// LIBRARY									libc.lib  			// !!!DHT!!!
+// LIBRARY									libglib.lib 		// !!!DHT!!!
+// LIBRARY 									KademliaCore.lib 	// !!!DHT!!!
+// LIBRARY									BitTorrentDHT.lib	// !!!DHT!!!
+

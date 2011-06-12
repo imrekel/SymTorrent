@@ -1,0 +1,23 @@
+; 
+; Installation file for SymTorrentLauncher application 
+; 
+
+;Languages 
+&EN 
+
+; The app's UID 
+; 
+#{"SymTorrentLauncher"},(0xA0001755),1,0,0 
+%{"BUTE AAIT"} 
+:"BUTE AAIT" 
+
+; Supports S60 v 3.0 
+[0x101F7961], 0, 0, 0, {"S60ProductID"} 
+
+; 
+; Files to install 
+; 
+"$(EPOCROOT)Epoc32\release\$(PLATFORM)\$(TARGET)\SymTorrentLaunch.exe"-"!:\sys\bin\SymTorrentLaunch.exe" 
+"$(EPOCROOT)Epoc32\data\z\private\10003a3f\import\apps\SymTorrentLaunch_reg.rsc"-"!:\private\10003a3f\import\apps\SymTorrentLaunch_reg.rsc"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\SymTorrentLaunch.RSC"-"!:\resource\apps\SymTorrentLaunch.RSC" 
+

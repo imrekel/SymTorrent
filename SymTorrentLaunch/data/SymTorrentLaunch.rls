@@ -1,0 +1,56 @@
+/*
+============================================================================
+ Name        : SymTorrentLaunch.rls
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : String localization file
+============================================================================
+*/
+
+//  LOCALISATION STRINGS
+
+//d:Caption string for app.
+rls_string qtn_app_caption_string "SymTorrentLaunch"
+rls_string qtn_app_short_caption_string "SymTorrentLaunch"
+
+//d:Command in options menu.
+//d:Example application spesific command.
+//l:list_single_popup_submenu_pane_1
+//
+rls_string qtn_appl_test "Test"
+
+// menu exit
+rls_string qtn_appl_exit "Exit"
+
+//d:Command in options menu.
+//d:Example application spesific command.
+//l:list_single_popup_submenu_pane_1
+//
+rls_string qtn_appl_option_item "<Application menu item>"
+
+//d:Command in options menu.
+//d:Example command for view 1.
+//l:list_single_popup_submenu_pane_1
+//
+rls_string qtn_view1_option_item "<View1 menu item>"
+
+//d:Command in options menu.
+//d:Example command for view 2.
+//l:list_single_popup_submenu_pane_1
+//
+rls_string qtn_view2_option_item "<View2 menu item>"
+
+//d:Name of the view 1 tab.
+//d:
+//l:
+//
+rls_string qtn_view1_tab "View1"
+
+//d:Name of the view 2 tab.
+//d:
+//l:
+//
+rls_string qtn_view2_tab "View2"
+
+// End of File

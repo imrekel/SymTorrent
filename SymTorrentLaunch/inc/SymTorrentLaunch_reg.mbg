@@ -1,0 +1,7 @@
+ 
+/* This file has been generated, DO NOT MODIFY. */
+enum TMifSymtorrentlaunch_reg
+	{
+	EMbmSymtorrentlaunch_regQgn_menu = 16384,
+	EMbmSymtorrentlaunch_regLastElement
+	};

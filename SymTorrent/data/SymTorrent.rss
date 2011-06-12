@@ -1,0 +1,1574 @@
+/*****************************************************************************
+ * Copyright (C) 2006-2008 Imre Kelényi
+ *-------------------------------------------------------------------
+ * This file is part of SymTorrent
+ *
+ * SymTorrent is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * SymTorrent is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with SymTorrent; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *****************************************************************************/
+
+/*
+* ============================================================================
+*  Name     : SymTorrent.rss
+*  Part of  : SymTorrent
+*  Created  : 31.01.2006 by Imre Kelényi
+*  Description:
+*     This file contains all the resources for the SymTorrent.
+* ============================================================================
+*/
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+#include "STDefs.h"
+#include <eikon.rh>
+#include "SymTorrent.hrh"
+#include "SymTorrent.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <CommonDialogs.rh>
+#include "CommonDialogs.hrh"
+
+#ifdef EKA2
+#include <appinfo.rh>
+#endif
+
+#ifdef TRACKER_BUILD
+#include "SymTorrentTracker.hrh"
+#endif
+
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "SymTorrent"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_symtorrent_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key = 'e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_mainview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrent_mainview
+    {
+    hotkeys = r_symtorrent_hotkeys;
+    menubar = r_symtorrent_menubar_mainview;  
+    cba     = R_AVKON_SOFTKEYS_OPTIONS_EXIT; 
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_menubar_mainview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrent_menubar_mainview
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtorrent_app_menu; txt = "App"; },
+        MENU_TITLE { menu_pane = r_symtorrent_mainview_menu; txt = "View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_mainview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrent_mainview_menu
+    {
+    items =
+        {		        
+        MENU_ITEM { command = ESymTorrentCmdDetails; txt = "Show details"; },	
+        MENU_ITEM { command = ESymTorrentCmdStopTorrent; txt = "Pause download"; },	       
+        MENU_ITEM { command = ESymTorrentCmdStartTorrent; txt = "Start download"; },
+        MENU_ITEM { command = ESymTorrentCmdStartSeeding; txt = "Continue sharing"; },	
+        MENU_ITEM { command = ESymTorrentCmdStopSeeding; txt = "Stop sharing"; },	
+        MENU_ITEM { command = ESymTorrentCmdChooseTorrentFile; txt = "Add torrent"; },
+		MENU_ITEM { command = ESymTorrentCmdRemoveTorrent; txt = "Remove"; },
+		MENU_ITEM { command = ESymTorrentCmdConnectProxy; txt = "Connect proxy"; },
+		MENU_ITEM { command = ESymTorrentCmdDisconnectProxy; txt = "Disconnect proxy"; },
+		MENU_ITEM { command = ESymTorrentCmdSettings; txt = "Settings"; flags = EEikMenuItemSeparatorAfter; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_detailsview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrent_detailsview
+    {
+    hotkeys = r_symtorrent_hotkeys;
+    menubar = r_symtorrent_menubar_detailsview;  
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST; 
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symtorrent_statusview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrent_statusview
+    {
+    hotkeys = r_symtorrent_hotkeys;
+    menubar = r_symtorrent_menubar_statusview;  
+    cba     = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }
+ 
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_menubar_detailsview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrent_menubar_detailsview
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtorrent_app_menu; txt = "App"; }
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symtorrent_menubar_statusview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrent_menubar_statusview
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtorrent_app_menu; txt = "App"; },
+        MENU_TITLE { menu_pane = r_symtorrent_statusview_menu; txt = "View"; }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_statusview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrent_statusview_menu
+    {
+    items =
+        {
+		MENU_ITEM { command = ESymTorrentCmdConnectProxy; txt = "Connect proxy"; },
+		MENU_ITEM { command = ESymTorrentCmdDisconnectProxy; txt = "Disconnect proxy"; },
+		MENU_ITEM { command = ESymTorrentCmdSettings; txt = "Settings"; flags = EEikMenuItemSeparatorAfter; }
+        };
+    }
+   
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_downloadstateview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrent_downloadstateview
+    {
+    hotkeys = r_symtorrent_hotkeys;
+    menubar = r_symtorrent_menubar_downloadstateview;  
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST; 
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_menubar_downloadstateview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrent_menubar_downloadstateview
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtorrent_app_menu; txt = "App"; },
+        MENU_TITLE { menu_pane = r_symtorrent_downloadstateview_menu; txt = "View"; } 
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symtorrent_downloadstateview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrent_downloadstateview_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = ESymTorrentCmdStopTorrent; txt = "Pause download"; },	       
+        MENU_ITEM { command = ESymTorrentCmdStartTorrent; txt = "Start download"; },
+        MENU_ITEM { command = ESymTorrentCmdStartSeeding; txt = "Continue sharing"; },	
+        MENU_ITEM { command = ESymTorrentCmdStopSeeding; txt = "Stop sharing"; }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_filesview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrent_filesview
+    {
+    hotkeys = r_symtorrent_hotkeys;
+    menubar = r_symtorrent_menubar_filesview;  
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST;
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_menubar_filesview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrent_menubar_filesview
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtorrent_app_menu; txt = "App"; },
+        MENU_TITLE { menu_pane = r_symtorrent_filesview_menu; txt = "View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_filesview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrent_filesview_menu
+    {
+    items =
+        {		
+        MENU_ITEM { command = ESymTorrentCmdOpenFile; txt = "Open"; },
+		MENU_ITEM { command = ESymTorrentCmdStopTorrent; txt = "Pause download"; },	       
+		MENU_ITEM { command = ESymTorrentCmdStartTorrent; txt = "Start download"; },
+		MENU_ITEM { command = ESymTorrentCmdStartSeeding; txt = "Continue sharing"; },	
+		MENU_ITEM { command = ESymTorrentCmdStopSeeding; txt = "Stop sharing"; },
+        MENU_ITEM { command = ESymTorrentCmdDownloadSkip; txt = "Download selection"; cascade = r_symtorrent_file_skip_submenu;},
+		MENU_ITEM { command = ESymTorrentCmdFileDetails; txt = "Show details";}
+        };
+    }
+
+RESOURCE MENU_PANE r_symtorrent_file_skip_submenu
+    {
+    items =
+        {
+        MENU_ITEM { command = ESymTorrentCmdDownloadFile; txt = "Select";},
+        MENU_ITEM { command = ESymTorrentCmdDownloadAllFiles; txt = "Select all";},
+        MENU_ITEM { command = ESymTorrentCmdDontDownloadFile; txt = "Deselect";},
+        MENU_ITEM { command = ESymTorrentCmdDontDownloadAnyFile; txt = "Deselect all";} 
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_settingsview
+//
+//----------------------------------------------------
+//    
+RESOURCE AVKON_VIEW r_symtorrent_settingsview
+	{
+    hotkeys = r_symtorrent_hotkeys; 
+    cba=R_AVKON_SOFTKEYS_SELECT_BACK;   
+    }
+
+    
+//----------------------------------------------------
+//   
+//    r_symtorrent_iapselectview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrent_iapselectview
+    {
+    //hotkeys = r_mobileagent_hotkeys;
+    //menubar = r_mobileagent_menubar_messagesview; 
+    cba     = R_AVKON_SOFTKEYS_SELECT_CANCEL; 
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symtorrent_app_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrent_app_menu
+    {
+    items =
+        {        
+        #ifdef TRACKER_BUILD
+        MENU_ITEM { command = ESymTorrentCmdTracker; txt = "Tracker"; },
+        #endif
+        MENU_ITEM { command = ESymTorrentCmdAbout; txt = "About"; },
+        MENU_ITEM { command = EAknSoftkeyExit; txt = qtn_appl_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_torrentfile_selection_dialog_c
+//	 
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_torrentfile_selection_dialog_c 
+{ 
+	title = "Select:"; 
+#ifdef EKA2
+	root_path = "C:\\Data"; 
+#else
+	root_path = "C:\\Nokia"; 
+#endif
+	filters = 
+	{
+		FILTER 
+		{ 
+		filter_type = EFilenameFilter;
+		filter_style = EInclusiveFilter;
+		filter_data = { "*.torrent" };
+		}
+	};
+}
+
+//----------------------------------------------------
+//   
+//    r_torrentfile_selection_dialog_e
+//	 
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_torrentfile_selection_dialog_e 
+{ 
+	title = "Select:"; 
+	root_path = "E:\\"; 
+	filters = 
+	{
+		FILTER 
+		{ 
+		filter_type = EFilenameFilter;
+		filter_style = EInclusiveFilter;
+		filter_data = { "*.torrent" };
+		}
+	};
+}
+
+
+// Titles of the tabs
+RESOURCE TBUF80 r_detailsview_title		{ buf = "Info"; }
+RESOURCE TBUF80 r_downloadstateview_title	{ buf = "Status"; }
+RESOURCE TBUF80 r_filesview_title		{ buf = "Files"; }
+
+
+
+//---------- Symtorrent settings list
+RESOURCE AVKON_SETTING_ITEM_LIST r_symtorrent_setting_item_list
+	{
+	title = "Settings";
+	flags = EAknSettingItemIncludeHiddenInOrdinal;
+	items =
+		{
+		AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetDownloadFolder;
+			name = "Download files to";     
+            },
+		AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetConnection;
+			name = "Network connection";     
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetRightSoftkey;
+            setting_page_resource = r_symtorrent_right_softkey_setting_page;
+            associated_resource = r_symtorrent_right_softkey_texts;
+            name = "Right selection key";
+            },             
+    	AVKON_SETTING_ITEM
+			{
+			identifier = ESTSetIncomingPort;
+			name = "Incoming port";
+			setting_page_resource = r_symtorrent_incoming_port_setting_page;
+			},
+		AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetStartupHashCheck;
+            setting_page_resource = r_symtorrent_startup_hash_check_setting_page;
+            associated_resource = r_symtorrent_startup_hash_check_texts;
+            name = "Startup hash checking";
+            }/*,
+        AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetCloseConnection;
+            setting_page_resource = r_symtorrent_close_connection_setting_page;
+            associated_resource = r_symtorrent_close_connection_texts;
+            name = "After downloading";
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetSubpieceSizeType;
+            setting_page_resource = r_symtorrent_subpiece_size_setting_page;
+            associated_resource = r_symtorrent_subpiece_size_texts;
+            name = "Subpiece size";
+            },
+        AVKON_SETTING_ITEM
+			{
+			identifier = ESTSetSubpieceSize;
+			name = "Custom subpiece size";
+			setting_page_resource = r_symtorrent_subpiece_value_setting_page;
+			}*/
+		};
+	}
+	
+	RESOURCE AVKON_SETTING_ITEM_LIST r_symtorrent_proxy_setting_item_list
+	{
+	title = "Settings";
+	flags = EAknSettingItemIncludeHiddenInOrdinal;
+	items =
+		{
+		AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetIncomingConnections;
+			name = "Use proxy";
+            setting_page_resource = r_symtorrent_incoming_connections_setting_page;
+            associated_resource = r_symtorrent_incoming_connections_setting_page_assoc;            
+            },
+        AVKON_SETTING_ITEM
+			{
+			identifier = ESTSetProxyAddress;
+			name = "Proxy address";
+			setting_page_resource = r_symtorrent_proxy_address_setting_page;
+			},
+        AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetProxyConnectionPort;
+			name = "Proxy connection port";
+            setting_page_resource = r_symtorrent_proxy_connectionport_setting_page;          
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = ESTSetProxyServicePort;
+			name = "Proxy service port";
+            setting_page_resource = r_symtorrent_proxy_serviceport_setting_page;          
+            }
+		};
+	}
+	
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_right_softkey_setting_page
+    {   
+    number= 0;
+    label = "Right selection key";
+    type = EAknCtPopupSettingList;
+    }
+    	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrent_right_softkey_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_symtorrent_right_softkey_on_off_texts;
+    popped_up_texts_resource = r_symtorrent_right_softkey_popped_up_on_off_texts;
+    }
+
+RESOURCE ARRAY r_symtorrent_right_softkey_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = "Hide"; },
+        AVKON_ENUMERATED_TEXT { value=0; text = "Exit"; }
+        };
+    }
+
+RESOURCE ARRAY r_symtorrent_right_softkey_popped_up_on_off_texts
+    {
+    items =
+        {
+        LBUF { txt = "Hide"; },
+        LBUF { txt = "Exit"; }
+        };
+    }
+    
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_startup_hash_check_setting_page
+    {   
+    number= 0;
+    label = "Hash checking on startup";
+    type = EAknCtPopupSettingList;
+    }
+    	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrent_startup_hash_check_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_symtorrent_startup_hash_check_on_off_texts;
+    popped_up_texts_resource = r_symtorrent_startup_hash_check_popped_up_on_off_texts;
+    }
+
+RESOURCE ARRAY r_symtorrent_startup_hash_check_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = "Enabled"; },
+        AVKON_ENUMERATED_TEXT { value=0; text = "Disabled"; }
+        };
+    }
+
+RESOURCE ARRAY r_symtorrent_startup_hash_check_popped_up_on_off_texts
+    {
+    items =
+        {
+        LBUF { txt = "Enable"; },
+        LBUF { txt = "Disable"; }
+        };
+    }
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_close_connection_setting_page
+    {   
+    number= 0;
+    label = "After downloads are complete";
+    type = EAknCtPopupSettingList;
+    }
+    	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrent_close_connection_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_symtorrent_close_connection_on_off_texts;
+    popped_up_texts_resource = r_symtorrent_close_connection_popped_up_on_off_texts;
+    }
+
+RESOURCE ARRAY r_symtorrent_close_connection_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = "Disconnect network"; },
+        AVKON_ENUMERATED_TEXT { value=0; text = "Continue sharing"; }
+        };
+    }
+
+RESOURCE ARRAY r_symtorrent_close_connection_popped_up_on_off_texts
+    {
+    items =
+        {
+        LBUF { txt = "Disconnect network"; },
+        LBUF { txt = "Continue sharing"; }
+        };
+    }
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_subpiece_size_setting_page
+    {   
+    number= 0;
+    label = "Subpiece size";
+    type = EAknCtPopupSettingList;
+    }
+    	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrent_subpiece_size_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_symtorrent_subpiece_size_on_off_texts;
+    popped_up_texts_resource = r_symtorrent_subpiece_size_popped_up_on_off_texts;
+    }
+
+RESOURCE ARRAY r_symtorrent_subpiece_size_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=0; text = "Auto"; },
+        AVKON_ENUMERATED_TEXT { value=1; text = "Custom"; }
+        };
+    }
+
+RESOURCE ARRAY r_symtorrent_subpiece_size_popped_up_on_off_texts
+    {
+    items =
+        {
+        LBUF { txt = "Auto"; },
+        LBUF { txt = "Custom"; }
+        };
+    }
+
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_upload_setting_page
+    {   
+    number= 0;
+    label = "Upload";
+    type = EAknCtPopupSettingList;
+    //editor_resource_id = r_setting_app_on_off_popup_setting_list;
+    }
+    	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrent_upload_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_symtorrent_upload_on_off_texts;
+    popped_up_texts_resource = r_symtorrent_upload_popped_up_on_off_texts;
+    }
+
+RESOURCE ARRAY r_symtorrent_upload_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = "Enabled"; },
+        AVKON_ENUMERATED_TEXT { value=0; text = "Disabled"; }
+        };
+    }
+
+RESOURCE ARRAY r_symtorrent_upload_popped_up_on_off_texts
+    {
+    items =
+        {
+        LBUF { txt = "Enabled"; },
+        LBUF { txt = "Disabled"; }
+        };
+    }
+	
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_proxy_connectionport_setting_page
+	{
+	label = "Proxy connection port";
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symtorrent_proxy_connectionport_setting_editor;
+	}
+	
+RESOURCE AVKON_INTEGER_EDWIN r_symtorrent_proxy_connectionport_setting_editor
+	{
+	min=0;
+	max=99999;
+	}
+	
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_incoming_port_setting_page
+	{
+	label = "Incoming port";
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symtorrent_incoming_port_setting_editor;
+	}
+	
+RESOURCE AVKON_INTEGER_EDWIN r_symtorrent_incoming_port_setting_editor
+	{ 
+	min=0;
+	max=99999;
+	}
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_subpiece_value_setting_page
+	{
+	label = "Subpiece size (Kbyte)";
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symtorrent_subpiece_value_editor;
+	}
+	
+RESOURCE AVKON_INTEGER_EDWIN r_symtorrent_subpiece_value_editor
+	{ 
+	min=1;
+	max=512;
+	}
+	
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_proxy_serviceport_setting_page
+	{
+	label = "Proxy service port";
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symtorrent_proxy_serviceport_setting_editor;
+	}
+	
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_tracker_serviceport_setting_page
+	{
+	label = "Tracker port";
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symtorrent_tracker_serviceport_setting_editor;
+	}
+	
+RESOURCE AVKON_INTEGER_EDWIN r_symtorrent_proxy_serviceport_setting_editor
+	{
+	min=0;
+	max=99999;
+	}
+
+RESOURCE AVKON_INTEGER_EDWIN r_symtorrent_tracker_serviceport_setting_editor
+	{
+	min=0;
+	max=99999;
+	}
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_proxy_address_setting_page
+    {   
+    label= "Enter proxy address";
+    type = EAknCtIpFieldEditor;
+    editor_resource_id = r_symtorrent_proxy_address_editor;
+    }
+    
+RESOURCE IP_FIELD_EDITOR r_symtorrent_proxy_address_editor
+    {
+    min_field_values = IP_FIELD
+        { 
+        first_field = 0;
+        second_field = 0;
+        third_field = 0;
+        fourth_field = 0;
+        };
+    max_field_values = IP_FIELD
+        {
+        first_field = 255;
+        second_field = 255;
+        third_field = 255;
+        fourth_field = 255;
+        };
+    flags = 0;
+    }
+	
+/*RESOURCE AVKON_SETTING_PAGE r_symtorrent_proxy_address_setting_page
+{
+    type = EEikCtEdwin;
+ 	editor_resource_id = r_symtorrent_proxy_address_editor;
+}
+
+RESOURCE EDWIN r_symtorrent_proxy_address_editor
+{
+	flags=0;      
+    width=5;      
+    lines=1;      
+    maxlength=100; 
+
+}*/
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrent_incoming_connections_setting_page
+    {   
+    number= 1;
+    label= "Use proxy";
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_symtorrent_incoming_connections_popup;
+    }
+
+RESOURCE POPUP_SETTING_LIST r_symtorrent_incoming_connections_popup
+    {
+    //flags = EAknPopupSettingListFlagAllowsUserDefinedEntry;
+	flags = 0;
+    }
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrent_incoming_connections_setting_page_assoc
+    {
+    setting_texts_resource = r_symtorrent_incoming_connections_texts;
+    popped_up_texts_resource = r_symtorrent_incoming_connections_popped_up_texts;
+    }
+
+/**
+ * Values must be the same as defined in enum TIncomingConnectionsMode (STPreferences.h)!
+ */
+RESOURCE ARRAY r_symtorrent_incoming_connections_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 0;
+            text = "Yes";
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 1;
+            text = "No";
+            }/*,
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 2;
+            text = "Disable";
+            }*/
+        };
+    }
+
+RESOURCE ARRAY r_symtorrent_incoming_connections_popped_up_texts
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = "Yes";
+            },
+        LBUF
+            {
+            txt = "No";
+            }/*,
+        LBUF
+            {
+            txt = "Disable";
+            }*/
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+//    dialog for displaying more text
+//
+// ----------------------------------------------------------------------------
+RESOURCE DIALOG r_data_dialog
+{
+        flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+        buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+        items=
+        {
+                DLG_LINE
+                {
+                        type = EAknCtPopupHeadingPane;
+                        id = EAknMessageQueryHeaderId;
+                        itemflags = EEikDlgItemNonFocusing;
+                        control = AVKON_HEADING
+                        {
+                        };
+                },
+                DLG_LINE
+                {
+                        type = EAknCtMessageQuery;
+                        id = EAknMessageQueryContentId;
+                        control = AVKON_MESSAGE_QUERY
+                        {
+                        };
+                }
+        };
+}
+
+// ----------------------------------------------------------------------------
+//
+//    dialog for displaying a warning confirmation query
+//
+// ----------------------------------------------------------------------------
+RESOURCE DIALOG r_warning_query
+	{
+    flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar | EEikDialogFlagCbaButtons;
+    buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+    items =
+    	{
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+                {
+                layout = EConfirmationQueryLayout;
+                label = "Warning";
+                bmpfile = "z:\\resource\\apps\\avkon2.mbm";
+                bmpid = EMbmAvkonQgn_note_warning;
+                bmpmask = EMbmAvkonQgn_note_warning_mask;
+                };
+            }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+//    wait dialog for closing torrents
+//
+// ----------------------------------------------------------------------------
+RESOURCE DIALOG r_symtorrent_wait_dialog
+    {
+    flags = EAknWaitNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = 1;
+            control= AVKON_NOTE 
+                { 
+                layout = EWaitLayout;
+                singular_label = "Closing torrents, please wait.";
+                
+                #ifdef EKA2
+                 imagefile = "z:\\resource\\apps\\avkon2.mbm";
+                #else
+                 imagefile = "z:\\system\\data\\avkon.mbm";
+                #endif
+                
+                imageid = EMbmAvkonQgn_note_progress;
+                imagemask = EMbmAvkonQgn_note_progress_mask;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;     
+                };
+            }
+        };
+    }
+
+RESOURCE CBA r_softkeys_empty_skip
+    {
+    buttons =
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyCancel; 
+            txt = "Skip";
+            }
+        };
+    }
+    
+
+RESOURCE DIALOG r_hash_check_progress_note
+{
+	flags = EAknProgressNoteFlags | EEikDialogFlagWait;
+	buttons = r_softkeys_empty_skip; 
+	items =
+	{
+		DLG_LINE
+		{
+			type = EAknCtNote;
+         	id = 1;
+         	control = AVKON_NOTE
+            {
+            	layout = EProgressLayout;
+
+            	singular_label = "Looking for already downloaded files";
+            	#ifdef EKA2
+                 imagefile = "z:\\resource\\apps\\avkon2.mbm";
+                #else
+                 imagefile = "z:\\system\\data\\avkon.mbm";
+                #endif
+            	imageid = EMbmAvkonQgn_note_progress;
+            	imagemask = EMbmAvkonQgn_note_progress_mask;
+            };
+
+         }
+
+      };
+
+   }
+
+
+
+// ***********************
+// ** s60 v3.0 app info **
+// ***********************
+RESOURCE LOCALISABLE_APP_INFO r_lai
+{
+	short_caption = "SymTorrent";
+	caption_and_icon = 
+	CAPTION_AND_ICON_INFO
+	{
+		caption = "SymTorrent";
+		number_of_icons = 1;
+        icon_file = "\\resource\\apps\\symtorrent_icon.mif";
+	};
+}
+
+
+// Tracker Resources
+#ifdef TRACKER_BUILD
+
+RESOURCE AVKON_SETTING_ITEM_LIST r_symtorrent_tracker_setting_item_list
+{
+title = "Settings";
+flags = EAknSettingItemIncludeHiddenInOrdinal;
+items =
+	{
+	AVKON_SETTING_ITEM
+        {
+        identifier = ESTSetTrackerServicePort;
+		name = "Tracker port";
+        setting_page_resource = r_symtorrent_tracker_serviceport_setting_page;
+        },
+    AVKON_SETTING_ITEM
+        {
+        identifier = ESTSetPieceSize;
+		name = "Piece size (KByte)";
+        setting_page_resource = r_symtorrentmaker_piecesize_settings_page;
+    //    associated_resource =r_symtorrentmaker_piecesize_settings_page_assoc;            
+        }
+	};
+}
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrentmaker_piecesize_settings_page
+	{
+	label = "Piece size (KByte)";
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symtorrentmaker_piecesize_setting_editor;
+	}
+	
+RESOURCE AVKON_INTEGER_EDWIN r_symtorrentmaker_piecesize_setting_editor
+	{
+	min = 1;
+	max = 100000;
+	}
+
+/*RESOURCE AVKON_SETTING_PAGE r_symtorrentmaker_piecesize_settings_page
+{
+    number= 1;
+    label= "Choose Piece Size";
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_symtorrentmaker_set_piecesize;
+}
+
+RESOURCE POPUP_SETTING_LIST r_symtorrentmaker_set_piecesize
+{
+	flags = 0;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symtorrentmaker_piecesize_settings_page_assoc
+{
+    setting_texts_resource = r_symtorrentmaker_setting_piecesizearray;
+    popped_up_texts_resource = r_aknexsettinglist_list_item_array;
+}
+
+RESOURCE ARRAY r_symtorrentmaker_setting_piecesizearray
+{
+    items =
+    {
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 64;
+            text = "64Kb";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 128;
+            text = "128Kb";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 256;
+            text = "256Kb";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 512;
+            text = "512Kb";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 1024;
+            text = "1Mb";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 2048;
+            text = "2Mb";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 4096;
+            text = "4Mb";
+        }
+    };
+}
+
+RESOURCE ARRAY r_aknexsettinglist_list_item_array
+{
+    items =
+    {
+        LBUF
+        {
+            txt = "64Kb";
+        },
+        LBUF
+        {
+            txt = "128Kb";
+        },
+        LBUF
+        {
+            txt = "256Kb";
+        },
+        LBUF
+        {
+            txt = "512Kb";
+        },
+        LBUF
+        {
+            txt = "1Mb";
+        },
+        LBUF
+        {
+            txt = "2Mb";
+        },
+        LBUF
+        {
+            txt = "4Mb";
+        }
+    };
+}*/
+
+RESOURCE AVKON_SETTING_PAGE r_symtorrentmaker_name_settings_page
+{
+    type = EEikCtEdwin;
+ 	editor_resource_id = r_symtorrentmaker_name_editor;
+}
+
+RESOURCE EDWIN r_symtorrentmaker_name_editor
+{
+	flags=0;      
+    width=5;      
+    lines=1;      
+    maxlength=20; 
+
+}
+
+/*
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_filename_query
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_symtorrentmaker_filename_query
+{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+	{
+		DLG_LINE
+		{
+			type = EAknCtQuery;
+			id = ESymTorrentMakerFilenameQuery;
+			control = AVKON_DATA_QUERY
+			{
+				layout = EDataLayout;
+				control =
+					EDWIN
+					{
+						width = 40;
+						maxlength = 40;
+						lines = 1;
+					};
+			};
+		}
+	};
+}*/
+
+//----------------------------------------------------
+//   
+//    r_file_selection_dialog_c
+//
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_file_selection_dialog_c 
+{ 
+ title = "Select file:"; 
+ root_path = "C:\\"; 
+ filters = 
+ {
+  FILTER 
+  { 
+  filter_type = EAttributeFilter; 
+  filter_style = EExclusiveFilter; 
+  filter_data = { "SH", "R" }; // Excludes system, hidden and read-only attributes 
+  } 
+ };
+}
+
+//----------------------------------------------------
+//   
+//    r_file_selection_dialog_e
+//
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_file_selection_dialog_e 
+{ 
+ title = "Select file:"; 
+ root_path = "E:\\"; 
+ filters = 
+ {
+  FILTER 
+  { 
+  filter_type = EAttributeFilter; 
+  filter_style = EExclusiveFilter; 
+  filter_data = { "SH", "R" }; // Excludes system, hidden and read-only attributes 
+  } 
+ };
+}
+
+////////////////////////////////////////////////////////////// TRACKER
+
+//----------------------------------------------------
+//   
+//    r_symtracker_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_symtracker_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key = 'e'; }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symtracker_app_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtracker_app_menu
+    {
+    items =
+        {        
+        MENU_ITEM { command = ESymTorrentCmdTracker; txt = "Tracker"; },
+        MENU_ITEM { command = ESymTorrentCmdAbout; txt = "About"; },
+        MENU_ITEM { command = EAknSoftkeyExit; txt = "Exit"; }
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symtorrenttracker_torrentlistview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrenttracker_torrentlistview_menu
+{
+    items =
+        {		                   
+        MENU_ITEM { command = ETrackerCmdAddTorrent; txt = "Add existing torrent"; },	        
+		MENU_ITEM { command = ETrackerCmdCreateTorrent; txt = "Create new torrent"; },             	
+        MENU_ITEM { command = ETrackerCmdRemoveTorrent; txt = "Remove torrent file"; },
+        MENU_ITEM { command = ETrackerCmdStartTracker; txt = "Start tracker"; },
+        MENU_ITEM { command = ETrackerCmdStopTracker; txt = "Stop tracker"; },
+        MENU_ITEM { command = ETrackerCmdSettings; txt = "Settings"; }    
+        };
+}
+
+
+/*// ----------------------------------------------------------------------------
+//
+//    dialog for displaying more text
+//
+// ----------------------------------------------------------------------------
+RESOURCE DIALOG r_data_dialog
+{
+        flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+        buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+        items=
+        {
+                DLG_LINE
+                {
+                        type = EAknCtPopupHeadingPane;
+                        id = EAknMessageQueryHeaderId;
+                        itemflags = EEikDlgItemNonFocusing;
+                        control = AVKON_HEADING
+                        {
+                        };
+                },
+                DLG_LINE
+                {
+                        type = EAknCtMessageQuery;
+                        id = EAknMessageQueryContentId;
+                        control = AVKON_MESSAGE_QUERY
+                        {
+                        };
+                }
+        };
+}
+
+//----------------------------------------------------
+//   
+//    r_torrentfile_selection_dialog_c
+//	 
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_torrentfile_selection_dialog_c 
+{ 
+	title = "Select:"; 
+#ifdef EKA2
+	root_path = "C:\\Data"; 
+#else
+	root_path = "C:\\Nokia"; 
+#endif
+	filters = 
+	{
+		FILTER 
+		{ 
+		filter_type = EFilenameFilter;
+		filter_style = EInclusiveFilter;
+		filter_data = { "*.torrent" };
+		}
+	};
+}
+
+//----------------------------------------------------
+//   
+//    r_torrentfile_selection_dialog_e
+//	 
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_torrentfile_selection_dialog_e 
+{ 
+	title = "Select:"; 
+	root_path = "E:\\"; 
+	filters = 
+	{
+		FILTER 
+		{ 
+		filter_type = EFilenameFilter;
+		filter_style = EInclusiveFilter;
+		filter_data = { "*.torrent" };
+		}
+	};
+}*/
+
+
+
+// Tracker Resources
+
+//----------------------------------------------------
+//   
+//    r_symtorrenttracker_torrentlistview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrenttracker_torrentlistview
+{
+//	hotkeys = r_symtracker_hotkeys;
+    menubar = r_symtorrenttracker_menubar_torrentlistview;  
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST;   
+}
+
+//----------------------------------------------------
+//   
+//    r_symtorrenttracker_menubar_torrentlistview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrenttracker_menubar_torrentlistview
+{
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtracker_app_menu; txt = "App"; },
+        MENU_TITLE { menu_pane = r_symtorrenttracker_torrentlistview_menu; txt = "View"; }
+        };
+}
+
+
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_viewfilelist
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrentmaker_viewfilelist
+{
+	hotkeys = r_symtracker_hotkeys;
+    menubar = r_symtorrentmaker_menubar_viewfilelist;  
+    cba     = R_AVKON_SOFTKEYS_OPTIONS_BACK;    
+}
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_menubar_viewfilelist
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrentmaker_menubar_viewfilelist
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_symtracker_app_menu; txt = "App"; },
+        MENU_TITLE { menu_pane = r_symtorrentmaker_viewfilelist_menu; txt = "View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_viewfilelist_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symtorrentmaker_viewfilelist_menu
+{
+    items =	
+    {
+        MENU_ITEM { command = ESymTorrentMakerCmdEnterFolder;		txt = "Enter Folder"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdExitFolder;		txt = "Exit Folder"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdFileDetails;		txt = "Details"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdAddFile;			txt = "Add File"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdAddFolder;			txt = "Add New Folder"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdAddExistingFolder; txt = "Add Existing Folder"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdDelCurrent;		txt = "Delete Current Item"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdDeleteChildren;	txt = "Delete Items In Folder"; },
+        MENU_ITEM { command = ESymTorrentCmdSettings;				txt = "Settings"; },
+        MENU_ITEM { command = ESymTorrentMakerCmdSaveTorrent;       txt = "Save Torrent File"; },            
+        MENU_ITEM { command = ESymTorrentMakerCmdCancel;			txt = "Cancel"; }
+    };
+}
+
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_menubar_viewsettings
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrentmaker_menubar_viewsettings
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_symtracker_app_menu; txt = "App"; }
+    };
+}
+
+
+//----------------------------------------------------
+//    r_datainput
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_datainput
+{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+	{
+		DLG_LINE
+		{
+			type = EAknCtQuery;
+			id = EGeneralQuery;
+			control = AVKON_DATA_QUERY
+			{
+				layout = EDataLayout;
+				label = "Enter folder name:";
+				control = EDWIN
+				{
+					flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+					base_line_delta = 21; 
+				};
+			};
+		}
+	};
+}
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_detailsview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symtorrentmaker_viewdetails
+{
+	hotkeys = r_symtracker_hotkeys;
+    menubar = r_symtorrentmaker_menubar_viewsettings;  
+    cba     = R_AVKON_SOFTKEYS_BACK;
+}
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_menubar_viewdetails
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symtorrentmaker_menubar_viewdetails
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_symtracker_app_menu; txt = "App"; }
+    };
+}
+
+//----------------------------------------------------
+//   
+//    r_symtorrentmaker_filename_query
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_symtorrentmaker_filename_query
+{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+	{
+		DLG_LINE
+		{
+			type = EAknCtQuery;
+			id = ESymTorrentMakerFilenameQuery;
+			control = AVKON_DATA_QUERY
+			{
+				layout = EDataLayout;
+				control =
+					EDWIN
+					{
+						width = 40;
+						maxlength = 40;
+						lines = 1;
+					};
+			};
+		}
+	};
+}
+
+/*
+//----------------------------------------------------
+//   
+//    r_file_selection_dialog_c
+//
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_file_selection_dialog_c 
+{ 
+ title = "Select file:"; 
+ root_path = "C:\\"; 
+ filters = 
+ {
+  FILTER 
+  { 
+  filter_type = EAttributeFilter; 
+  filter_style = EExclusiveFilter; 
+  filter_data = { "SH", "R" }; // Excludes system, hidden and read-only attributes 
+  } 
+ };
+}
+
+//----------------------------------------------------
+//   
+//    r_file_selection_dialog_e
+//
+//----------------------------------------------------
+//
+RESOURCE FILESELECTIONDIALOG r_file_selection_dialog_e 
+{ 
+ title = "Select file:"; 
+ root_path = "E:\\"; 
+ filters = 
+ {
+  FILTER 
+  { 
+  filter_type = EAttributeFilter; 
+  filter_style = EExclusiveFilter; 
+  filter_data = { "SH", "R" }; // Excludes system, hidden and read-only attributes 
+  } 
+ };
+}*/
+
+
+#endif //TRACKER_BUILD
+
+		    
+// End of File

@@ -1,0 +1,2 @@
+SymTorrent, Copyright (C) 2006-2010 AMORG
+SymTorrent comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. Read the license received along with the application for more details.

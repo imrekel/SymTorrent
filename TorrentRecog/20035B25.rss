@@ -1,0 +1,27 @@
+
+#include <RegistryInfo.rh>
+
+RESOURCE REGISTRY_INFO r_registry
+{
+    dll_uid = 0x20035B25; // should match name of this file
+    interfaces =
+    {
+        INTERFACE_INFO
+        {
+            interface_uid = 0x101F7D87;  // const for all Data Recognizers
+            implementations =
+            {
+                IMPLEMENTATION_INFO
+                {
+                    implementation_uid = 0x20035B25;
+                    version_no = 1;
+                    display_name = "BitTorrentRecog";
+                    default_data = "";        // Notify Interface
+                    opaque_data = "";
+                }
+            };
+        }
+    };
+}
+
+// End of File

@@ -1,0 +1,58 @@
+/*
+============================================================================
+ Name        : SymTorrentLaunch.mmp
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Project specification file for SymTorrentLaunch
+============================================================================
+*/
+
+TARGET            SymTorrentLaunch.exe
+TARGETTYPE        exe
+UID		          0x0 0xA0001755
+EPOCSTACKSIZE	  0x5000
+
+SOURCEPATH        ..\src
+SOURCE            SymTorrentLaunch.cpp
+SOURCE            SymTorrentLaunchApplication.cpp
+SOURCE            SymTorrentLaunchDocument.cpp
+SOURCE            SymTorrentLaunchAppUi.cpp
+
+SOURCEPATH        ..\data
+
+START RESOURCE    SymTorrentLaunch.rss
+	HEADER
+	TARGETPATH \resource\apps
+END
+
+START RESOURCE    SymTorrentLaunch_reg.rss
+	TARGETPATH 	      \private\10003a3f\import\apps
+END 
+
+
+
+USERINCLUDE       ..\inc
+
+SYSTEMINCLUDE     \epoc32\include
+
+LIBRARY           euser.lib
+LIBRARY           apparc.lib
+LIBRARY           cone.lib
+LIBRARY           eikcore.lib
+LIBRARY           avkon.lib
+LIBRARY           commonengine.lib
+LIBRARY		  	  efsrv.lib
+LIBRARY           estor.lib
+LIBRARY           eikcoctl.lib
+LIBRARY           commonui.lib 
+LIBRARY           apmime.lib 
+LIBRARY           apgrfx.lib 
+LIBRARY           charconv.lib
+
+LANG SC
+
+VENDORID	  	  0
+CAPABILITY        NONE
+// End of File
+

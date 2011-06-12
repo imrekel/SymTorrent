@@ -1,0 +1,124 @@
+/*****************************************************************************
+ * Copyright (C) 2006 Imre Kelényi
+ *-------------------------------------------------------------------
+ * This file is part of SymTorrent
+ *
+ * SymTorrent is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * SymTorrent is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Symella; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *****************************************************************************/
+
+/*
+* ============================================================================
+*  Name     : SymTorrent resource header file SymTorrent.hrh
+*  Part of  : SymTorrent
+*  Created  : 31.01.2006 by Imre Kelényi
+*  Description:
+*     This file contains declarations for constants of SymTorrent.
+*     The file can be included in C++ or resource file.
+*  Copyright: 2006
+* ============================================================================
+*/
+
+#ifndef SYMTORRENT_HRH
+#define SYMTORRENT_HRH
+
+enum TSymTorrentCommandIds
+{
+	ESymTorrentCmdAppTest = 1,
+	ESymTorrentCmdTracker,
+	ESymTorrentCmdStatus,
+	ESymTorrentCmdAbout,
+    ESymTorrentCmdMainPage,
+	ESymTorrentCmdChooseTorrentFile,
+	ESymTorrentCmdDetails,
+	ESymTorrentCmdRemoveTorrent,
+	ESymTorrentCmdSettings,
+	ESymTorrentCmdDetailsFromTorrentDetails,
+	ESymTorrentCmdDownloadstate,
+	ESymTorrentCmdTorrentFiles,
+	ESymTorrentCmdOpenFile,
+	ESymTorrentCmdFileDetails,
+	ESymTorrentCmdHide,
+	ESymTorrentCmdConnectProxy,
+	ESymTorrentCmdDisconnectProxy,
+	ESymTorrentCmdStopTorrent,
+	ESymTorrentCmdStartTorrent,
+	ESymTorrentCmdStartSeeding,
+	ESymTorrentCmdStopSeeding,
+	ESymTorrentCmdDirectoryViewOpen,
+	ESymTorrentCmdDontDownloadFile,
+	ESymTorrentCmdDownloadFile,
+	ESymTorrentCmdDownloadAllFiles,
+	ESymTorrentCmdDontDownloadAnyFile,
+	ESymTorrentCmdDownloadSkip
+};
+
+enum TSymTorrentTabViewId
+{
+	ESymTorrentDownloadStateViewTab = 2,
+    ESymTorrentDetailsViewTab,   
+    ESymTorrentFilesViewTab,
+    ESymTorrentMainViewTab,
+    ESymTorrentStatusViewTab,
+    ESymTorrentSettingsGeneralTab,
+    ESymTorrentSettingsProxyTab,
+    ESymTorrentSettingsTrackerTab
+};
+ 
+enum TIcons
+{
+	EIcon1 = 0,
+	EIcon1_mask,
+	EIcon2,
+	EIcon2_mask,
+	EIcon3,
+	EIcon3_mask
+};
+
+enum TSymTorrentViewId
+{
+	ESymTorrentMainView = 1,
+	ESymTorrentDownloadStateView,		
+	ESymTorrentDetailsView,
+	ESymTorrentFilesView,		
+	ESymTorrentSettingsView,
+	ESymTorrentStatusView
+};
+
+enum TSymTorrentSettingsIDs
+{
+	ESTSetDownloadFolder = 1,
+	ESTSetConnection,
+	ESTSetRightSoftkey,
+	ESTSetIncomingConnections,
+	ESTSetIncomingPort,
+	ESTSetProxyAddress,
+	ESTSetProxyConnectionPort,
+	ESTSetProxyServicePort,
+	ESTSetTrackerServicePort,
+	ESTSetPieceSize,
+	ESTSetUpload,
+	ESTSetStartupHashCheck,
+	ESTSetCloseConnection,
+	ESTSetSubpieceSizeType,
+	ESTSetSubpieceSize
+};
+
+enum TFileSelectionType
+{
+	EStartC = 1,
+	EStartE
+};
+
+#endif      // SYMTORRENT_HRH

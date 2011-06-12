@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" baseProfile="tiny" height="64px" width="64px" viewBox="0 0 64 64">
+<metadata/>
+<g>
+<path d="M 7.7509911,18.109122 L 18.357495,7.5025162 L 32.4995,21.644657 L 46.641506,7.5025162 L 57.248009,18.109122 L 43.106004,32.251263 L 57.248009,46.393404 L 46.641506,57.000009 L 32.4995,42.857869 L 18.357495,57.000009 L 7.7509911,46.393404 L 21.892996,32.251263 L 7.7509911,18.109122 z " style="fill:#cd0000;fill-opacity:1;fill-rule:evenodd;stroke:#500;stroke-width:3.99998236;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+<rect height="64" style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:4;stroke-linejoin:miter;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1" width="64" x="0" y="-0.28243458"/>
+</g>
+</svg>
