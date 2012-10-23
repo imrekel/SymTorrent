@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (C) 2006-2007 Imre Kelényi
+ * Copyright (C) 2006-2012 Imre Kelényi
  *-------------------------------------------------------------------
  * This file is part of SymTorrent
  *
@@ -21,9 +21,9 @@
 #ifndef __STDEFS_H__
 #define __STDEFS_H__
 
-#define SYMTORRENT_VERSION 1.50
-#define SYMTORRENT_VERSION_LIT _L("1.50")
-#define SYMTORRENT_PEER_ID_VERSION _L8("-ST0150-")
+#define SYMTORRENT_VERSION 1.51
+#define SYMTORRENT_VERSION_LIT _L("1.51")
+#define SYMTORRENT_PEER_ID_VERSION _L8("-ST0151-")
 
 #define SYMTORRENT_ENGINE_UID 0xA0001C44
 

@@ -68,7 +68,7 @@ USERINCLUDE                             ..\..\KiLogger\inc
 
 SYSTEMINCLUDE                           .
 SYSTEMINCLUDE                           \epoc32\include 
-SYSTEMINCLUDE                           \epoc32\include\ecom 
+SYSTEMINCLUDE                           \epoc32\include\ecom \epoc32\include\mw \epoc32\include\platform \epoc32\include\platform\mw
 // SYSTEMINCLUDE							\epoc32\include\stdapis 			// !!!DHT!!!
 // SYSTEMINCLUDE							\epoc32\include\stdapis\glib-2.0  	// !!!DHT!!!
 

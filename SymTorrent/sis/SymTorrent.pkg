@@ -1,5 +1,5 @@
 ;/*****************************************************************************
-; * Copyright (C) 2006-2007 Imre Kelényi
+; * Copyright (C) 2006-2007 Imre Kel?nyi
 ; *-------------------------------------------------------------------
 ; * This file is part of SymTorrent
 ; *
@@ -26,7 +26,7 @@
 &EN
 
 ; The app's UID
-#{"SymTorrent"},(0xA0001751),1,50,0
+#{"SymTorrent"},(0xA0001751),1,51,0
 %{"BUTE AAIT"}
 :"BUTE AAIT"
 
@@ -35,6 +35,12 @@
 
 ;Supports S60 release 5.0
 [0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Symbian^3 and Anna
+[0x20022E6D], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Symbian Belle
+[0x2003A678], 0, 0, 0, {"Series60ProductID"}
 
 ;
 ; Files to install

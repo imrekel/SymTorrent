@@ -23,7 +23,7 @@
 #include <avkon.hrh>
 #include <aknPopup.h>
 #include <caknfileselectiondialog.h>
-#include <caknmemoryselectiondialog.h> 
+#include <caknmemoryselectiondialogmultidrive.h> 
 
 
 CFileSelectionSettingItem::CFileSelectionSettingItem(TInt aIdentifier, TFileName& aFileName, TCommonDialogType aDialogType) :
@@ -44,33 +44,30 @@ const TDesC& CFileSelectionSettingItem::SettingTextL( )
 }
 
 void CFileSelectionSettingItem::EditItemL(TBool /*aCalledFromMenu*/)
-{
-	// Select memory
-	CAknMemorySelectionDialog* memSelectionDialog = CAknMemorySelectionDialog::NewL
+{	           
+	// Select drive
+	CAknMemorySelectionDialogMultiDrive* memSelectionDialog = CAknMemorySelectionDialogMultiDrive::NewL
 		(ECFDDialogTypeNormal, /*aShowUnavailableDrives*/EFalse);
 	CleanupStack::PushL(memSelectionDialog);
 
-	CAknMemorySelectionDialog::TMemory mem(CAknMemorySelectionDialog::EPhoneMemory);
-
-	TInt ret = memSelectionDialog->ExecuteL(mem);
+	TDriveNumber mem;
+	TFileName memRootPath;
+	
+	TInt ret = memSelectionDialog->ExecuteL(mem, &iOwnedFileName, NULL);
 	CleanupStack::PopAndDestroy(memSelectionDialog);
 	if (!ret) return;
 
+	// Select file on the selected drive
 	CAknFileSelectionDialog* fileSelectionDialog = 
 		CAknFileSelectionDialog::NewL(iDialogType);	
 	CleanupStack::PushL(fileSelectionDialog);
 	
 	fileSelectionDialog->SetTitleL(_L("Download files to"));
 	fileSelectionDialog->SetLeftSoftkeyFileL(_L("Select"));	
-	
-	if (mem == CAknMemorySelectionDialog::EMemoryCard)	
-		iOwnedFileName = _L("E:\\");
-	else
-		iOwnedFileName = _L("C:\\");
 
 	// launch file select dialog
 	TBool result = fileSelectionDialog->ExecuteL(iOwnedFileName);
-	CleanupStack::PopAndDestroy(); // fileSelectionDialog
+	CleanupStack::PopAndDestroy(fileSelectionDialog);
 	
 	if (result)
 		iFileName = iOwnedFileName;

@@ -207,7 +207,6 @@ void CSymTorrentSettingsContainer::EditItemL(TInt aIndex, TBool aCalledFromMenu)
 //	TIncomingConnectionsMode incomingConnectionsMode = 
 	//			TIncomingConnectionsMode(iIncomingConnections);
 				
-	CSTTorrentManager* torrentMgr = TORRENTMGR;
 	CSTPreferences* prefs = PREFERENCES;
 	
 	switch (switchIndex)

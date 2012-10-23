@@ -30,11 +30,9 @@ START RESOURCE    SymTorrentLaunch_reg.rss
 	TARGETPATH 	      \private\10003a3f\import\apps
 END 
 
-
-
 USERINCLUDE       ..\inc
 
-SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE     \epoc32\include \epoc32\include\mw \epoc32\include\platform \epoc32\include\platform\mw
 
 LIBRARY           euser.lib
 LIBRARY           apparc.lib
@@ -55,4 +53,3 @@ LANG SC
 VENDORID	  	  0
 CAPABILITY        NONE
 // End of File
-

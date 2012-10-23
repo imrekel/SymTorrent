@@ -172,7 +172,7 @@ public: // exported methods
 	 * Adds a push peer to the torrent's peer list.
 	 * Push peers are connected by the engine even if no pieces are needed from them.
 	 */
-	IMPORT_C void CSTTorrent::AddPushPeerL(TInetAddr aAddress);
+	IMPORT_C void AddPushPeerL(TInetAddr aAddress);
 	
 	/**
 	 * Saves the sate of the torrent

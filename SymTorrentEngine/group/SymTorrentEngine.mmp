@@ -46,7 +46,7 @@ USERINCLUDE                             ..\..\KiLogger\inc
 // USERINCLUDE                             ..\..\..\KademliaCore\inc 			// !!!DHT!!!
 // USERINCLUDE                             ..\..\..\BitTorrentDHT\inc  			// !!!DHT!!!
 // SYSTEMINCLUDE                           . 
-SYSTEMINCLUDE                           \epoc32\include 						
+SYSTEMINCLUDE                           \epoc32\include \epoc32\include\mw \epoc32\include\platform \epoc32\include\platform\mw					
 SYSTEMINCLUDE                           \epoc32\include\ecom					
 // SYSTEMINCLUDE							\epoc32\include\stdapis				// !!!DHT!!!
 // SYSTEMINCLUDE							\epoc32\include\stdapis\glib-2.0	// !!!DHT!!!

@@ -55,7 +55,7 @@ public:
 	
 private:
 	
-	CSTBencodedList* RSTPeerArray::CreatePeerInfoBencodeL(CSTPeer& aPeer);
+	CSTBencodedList* CreatePeerInfoBencodeL(CSTPeer& aPeer);
 	
 private:
 	

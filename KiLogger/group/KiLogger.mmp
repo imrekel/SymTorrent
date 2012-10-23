@@ -10,7 +10,7 @@ UID                                     0x1000008d 0x2000CBEB
 
 USERINCLUDE                             ..\inc 
 SYSTEMINCLUDE                           . 
-SYSTEMINCLUDE                           \epoc32\include 
+SYSTEMINCLUDE                           \epoc32\include \epoc32\include\mw \epoc32\include\platform
 
 SOURCEPATH                              ..\src
 

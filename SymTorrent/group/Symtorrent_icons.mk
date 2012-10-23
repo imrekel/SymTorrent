@@ -31,15 +31,15 @@ LIB : do_nothing
 CLEANLIB : do_nothing
 
 RESOURCE :
-	mifconv $(ICONTARGETFILENAME) /h$(HEADERFILENAME) /c24,8\
-		..\gfx\downloading.svg \
-		..\gfx\complete.svg \
-		..\gfx\paused.svg \
-		..\gfx\failed.svg \
-		..\gfx\uploading.svg \
-		..\gfx\not_uploading.svg \
-		..\gfx\empty.svg \
-		..\gfx\not_sharing.svg
+	mifconv $(ICONTARGETFILENAME) /h$(HEADERFILENAME) \
+		/c24,8 ..\gfx\downloading.svg \
+		/c24,8 ..\gfx\paused.svg \
+		/c24,8 ..\gfx\failed.svg \
+		/c24,8 ..\gfx\uploading.svg \
+		/c24,8 ..\gfx\not_uploading.svg \
+		/c24,8 ..\gfx\empty.svg \
+		/c24,8 ..\gfx\not_sharing.svg \
+		/c24,8 ..\gfx\complete.svg
 
 FREEZE : do_nothing
 

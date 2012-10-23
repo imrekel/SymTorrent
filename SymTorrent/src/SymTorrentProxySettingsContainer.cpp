@@ -123,9 +123,8 @@ void CSymTorrentProxySettingsContainer::EditItemL(TInt aIndex, TBool aCalledFrom
 	(*SettingItemArray())[aIndex]->StoreL();
 	
 	//TIncomingConnectionsMode incomingConnectionsMode = 
-		//		TIncomingConnectionsMode(iIncomingConnections);
+	//		TIncomingConnectionsMode(iIncomingConnections);
 				
-	CSTTorrentManager* torrentMgr = TORRENTMGR;
 	CSTPreferences* prefs = PREFERENCES;
 	
 	switch (aIndex)
