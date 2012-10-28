@@ -30,9 +30,6 @@
 %{"BUTE AAIT"}
 :"BUTE AAIT"
 
-;Supports S60 release 3.0
-[0x101F7961], 0, 0, 0, {"Series60ProductID"}
-
 ;Supports S60 release 5.0
 [0x1028315F], 0, 0, 0, {"Series60ProductID"}
 
